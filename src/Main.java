@@ -11,9 +11,24 @@ public class Main {
      * @param grade The grade
      */
     public static void gradeMessage(int grade) {
-        /*
-        TODO: Your code for part A is here...
-         */
+        int grade_divided = grade/10;
+        switch (grade_divided){
+            case (7):
+                System.out.println("Good");
+                break;
+            case (8):
+                System.out.println("Very Good");
+                break;
+            case (9):
+                System.out.println("Great");
+                break;
+            case (10):
+                System.out.println("Excellent");
+                break;
+            default:
+                System.out.println("OK");
+                break;
+        }
     }
 
     /**
