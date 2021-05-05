@@ -71,11 +71,16 @@ public class Main {
      */
     public static String decompressString(String compressedString) {
         String decompressedString = "";
-
-        /*
-        TODO: Your code for part B2 is here...
-        Note: you may change the given code, but you must not change the signature of the method.
-         */
+        int strLen = compressedString.length();
+        int front = 0, back = 0;
+        while (front <= strLen) {
+            if (compressedString.charAt(front) < 48 || compressedString.charAt(front) > 57) {
+                decompressedString = decompressedString + compressedString.charAt(front);
+            }
+            else {
+                
+            }
+        }
 
         return compressedString;
     }
