@@ -70,19 +70,34 @@ public class Main {
      * @return The decompressed string
      */
     public static String decompressString(String compressedString) {
-        String decompressedString = "";
-        int strLen = compressedString.length();
+        StringBuilder decompressedString = new StringBuilder();
         int front = 0, back = 0;
-        while (front <= strLen) {
+        while (front <= compressedString.length()) {  // while didn't reach end of string
+            String subString;
+            int numFromStr;
+            // if current char isn't a number
             if (compressedString.charAt(front) < 48 || compressedString.charAt(front) > 57) {
-                decompressedString = decompressedString + compressedString.charAt(front);
+                front++;
             }
             else {
-                
+                subString = compressedString.substring(back, front);  // contains the chars until the number
+                int numStringFront = front, numStringBack = front;
+                while (numStringFront < compressedString.length() &&
+                        !(compressedString.charAt(numStringFront) < 48 ||
+                                compressedString.charAt(numStringFront) > 57)) {
+                    numStringFront++;
+                }
+                String numSubStr = compressedString.substring(numStringBack, numStringFront);
+                numFromStr = Integer.parseInt(compressedString.substring(numStringBack, numStringFront));
+                for (int i = 0; i < numFromStr; i++) {
+                    decompressedString.append(subString);
+                }
+                front = numStringFront;
+                back = front;
             }
+            if (front == compressedString.length()) break;
         }
-
-        return compressedString;
+        return decompressedString.toString();
     }
 
     public static void main(String[] args) throws FileNotFoundException {
