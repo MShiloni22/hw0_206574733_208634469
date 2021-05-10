@@ -11,8 +11,8 @@ public class Main {
      * @param grade The grade
      */
     public static void gradeMessage(int grade) {
-        int grade_divided = grade/10;
-        switch (grade_divided){
+        int gradeDivided = grade/10;
+        switch (gradeDivided){
             case (7):
                 System.out.println("Good");
                 break;
@@ -45,11 +45,11 @@ public class Main {
     public static String compressString(String stringToCompress) {
         StringBuilder compressedString = new StringBuilder();
         int countConsecutive = 0;
-        int strLength = stringToCompress.length();
-        for (int i = 0; i < strLength; i++) {
+        int stringLength = stringToCompress.length();
+        for (int i = 0; i < stringLength; i++) {
             countConsecutive++;
             // If next character is different than current append this char to result
-            if (i + 1 >= strLength || stringToCompress.charAt(i) != stringToCompress.charAt(i + 1)) {
+            if (i + 1 >= stringLength || stringToCompress.charAt(i) != stringToCompress.charAt(i + 1)) {
                 compressedString.append(stringToCompress.charAt(i)).append(countConsecutive);
                 countConsecutive = 0;
             }
@@ -74,24 +74,24 @@ public class Main {
         int front = 0, back = 0;
         while (front <= compressedString.length()) {  // while didn't reach end of string
             String subString;
-            int numFromStr;
+            int numberFromString;
             // if current char isn't a number
             if (compressedString.charAt(front) < 48 || compressedString.charAt(front) > 57) {
                 front++;
             }
             else {
                 subString = compressedString.substring(back, front);  // contains the chars until the number
-                int numStringFront = front, numStringBack = front;
-                while (numStringFront < compressedString.length() &&
-                        !(compressedString.charAt(numStringFront) < 48 ||
-                                compressedString.charAt(numStringFront) > 57)) {
-                    numStringFront++;
+                int numberStringFront = front, numberStringBack = front;
+                while (numberStringFront < compressedString.length() &&
+                        !(compressedString.charAt(numberStringFront) < 48 ||
+                                compressedString.charAt(numberStringFront) > 57)) {
+                    numberStringFront++;
                 }
-                numFromStr = Integer.parseInt(compressedString.substring(numStringBack, numStringFront));
-                for (int i = 0; i < numFromStr; i++) {
+                numberFromString = Integer.parseInt(compressedString.substring(numberStringBack, numberStringFront));
+                for (int i = 0; i < numberFromString; i++) {
                     decompressedString.append(subString);
                 }
-                front = numStringFront;
+                front = numberStringFront;
                 back = front;
             }
             if (front == compressedString.length()) break;
