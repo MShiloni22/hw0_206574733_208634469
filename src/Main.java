@@ -43,19 +43,19 @@ public class Main {
      * @return The compressed version of the string
      */
     public static String compressString(String stringToCompress) {
-        String compressedString = "";
+        StringBuilder compressedString = new StringBuilder();
         int countConsecutive = 0;
         int strLength = stringToCompress.length();
         for (int i = 0; i < strLength; i++) {
             countConsecutive++;
             // If next character is different than current append this char to result
             if (i + 1 >= strLength || stringToCompress.charAt(i) != stringToCompress.charAt(i + 1)) {
-                compressedString = compressedString + stringToCompress.charAt(i) + countConsecutive;
+                compressedString.append(stringToCompress.charAt(i)).append(countConsecutive);
                 countConsecutive = 0;
             }
         }
 
-        return compressedString;
+        return compressedString.toString();
     }
 
     /**
@@ -87,7 +87,6 @@ public class Main {
                                 compressedString.charAt(numStringFront) > 57)) {
                     numStringFront++;
                 }
-                String numSubStr = compressedString.substring(numStringBack, numStringFront);
                 numFromStr = Integer.parseInt(compressedString.substring(numStringBack, numStringFront));
                 for (int i = 0; i < numFromStr; i++) {
                     decompressedString.append(subString);
